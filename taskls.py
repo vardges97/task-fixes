@@ -27,7 +27,7 @@ task_list = []
 #     return max(task['id'] for task in task_list) + 1
 
 def add_task():
-    task_id = input('enter a task priority')
+    task_id = input('enter a task id')
     description = input("Enter task description: ")
     if not description:
         print("Task description cannot be empty.")
@@ -74,11 +74,11 @@ def list_compeleted():
     else:
         print('task not in task list')
 
-# def list_by_priority():
-#     if not task_list:
-#         print('no tasks to list')
-#     for task in task_list:
-#         print(max{task_list['priority']})
+def list_by_priority():
+    if not task_list:
+        print('no tasks to list')
+    for task in task_list:
+        print(max({task_list['priority']}))
 
 def task_status():
     task_id = input("please enter id of the task to change status: ")
