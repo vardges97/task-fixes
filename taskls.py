@@ -64,6 +64,15 @@ def list_tasks():
     for task in task_list:
         print(f"ID: {task['id']},Description: {task['description']},Status: {task['compeletion']},Priority: {task['priority']}")
 
+def toggle_task_completion():
+    task_id = int(input("Enter the task ID to mark as completed/not completed: "))
+    for task in task_list:
+        if task['id'] == task_id:
+            task['completed'] = not task['completed']
+            print("Task status updated.")
+            return
+    print("Task not found in the to-do list.")
+
 def list_compeleted():
     if not task_list:
         print('to tasks found')
@@ -74,11 +83,6 @@ def list_compeleted():
     else:
         print('task not in task list')
 
-def list_by_priority():
-    if not task_list:
-        print('no tasks to list')
-    for task in task_list:
-        print(max({task_list['priority']}))
 
 def task_status():
     task_id = input("please enter id of the task to change status: ")
@@ -105,14 +109,21 @@ def task_priority():
 
 def list_by_priority():
     if not task_list:
-        print('to tasks found')
-    criteria=['high','medium','low']
-    for k in criteria:
-        print(my)
-        # if task['priority'] in ('low','medium','high') :
-        #     print(f"ID: {task['id']},Description: {task['description']},"
-        #         f"Status: {task["compeletion"]},{task['priority']}")
-    print('task not in task list')
+        print('no tasks to list')
+    for task in task_list:
+        print(max({task_list['priority']}))
+
+
+# def list_by_priority():
+#     if not task_list:
+#         print('to tasks found')
+#     criteria=['high','medium','low']
+#     for k in criteria:
+#         print(my)
+#         # if task['priority'] in ('low','medium','high') :
+#         #     print(f"ID: {task['id']},Description: {task['description']},"
+#         #         f"Status: {task["compeletion"]},{task['priority']}")
+#     print('task not in task list')
 
 while True:
     print("Welcome to the task list menue.\nto add a task press 1\nto remove a task press 2\n"
