@@ -1,33 +1,12 @@
 task_list = []
 
-
-# def add_task():
-#     task_id = input('please enter a task id: ')
-#     description = input('enter the name of the task: ')
-#     if not description:
-#         print('task description cant be empty')
-#         return
-#     priority = input("enter a priority for the task(low,medium,high):").lower
-#     if priority not in ('low','medium','high'):
-#         print('invalid task must have priority')
-#         return
-#     statuss = "incomplet"
-#     task = {
-#         'id':task_id,
-#         'description': description,
-#         'compeletion': statuss,
-#         'priority': priority
-#     }
-#     task_list.append(task)
-#     print('task added successfully')
-
-# def generate_unique_id():
-#     if not task_list:
-#         return 1
-#     return max(task['id'] for task in task_list) + 1
+def generate_unique_id(id = 0):
+    if not task_list:
+        return 1
+    return max(task['id'] for task in task_list) + 1
 
 def add_task():
-    task_id = input('enter a task id')
+    #task_id = input('enter a task id')
     description = input("Enter task description: ")
     if not description:
         print("Task description cannot be empty.")
@@ -39,7 +18,7 @@ def add_task():
     status = "incompelete"
     priority = "none"
     task = {
-        'id': task_id,
+        'id': generate_unique_id(),
         'description': description,
         'compeletion': status,
         'priority': priority
@@ -64,14 +43,14 @@ def list_tasks():
     for task in task_list:
         print(f"ID: {task['id']},Description: {task['description']},Status: {task['compeletion']},Priority: {task['priority']}")
 
-def toggle_task_completion():
-    task_id = int(input("Enter the task ID to mark as completed/not completed: "))
-    for task in task_list:
-        if task['id'] == task_id:
-            task['completed'] = not task['completed']
-            print("Task status updated.")
-            return
-    print("Task not found in the to-do list.")
+# def toggle_task_completion():
+#     task_id = int(input("Enter the task ID to mark as completed/not completed: "))
+#     for task in task_list:
+#         if task['id'] == task_id:
+#             task['completed'] = not task['completed']
+#             print("Task status updated.")
+#             return
+#     print("Task not found in the to-do list.")
 
 def list_compeleted():
     if not task_list:

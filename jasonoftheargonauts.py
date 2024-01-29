@@ -5,21 +5,21 @@ import json
 def additem(unid,data):
     with open("file.json",'w') as file:
         di[unid] = data
-        json.dump(di,f)
+        json.dump(di,file)
         return ("success")
 
 def retrivedata(unid):
     with open("file.json","w") as file:
         if unid in di:
-            di = json.load(f)
+            di = json.load(file)
             return di
     raise json.decoder.JSONDecodeError("invalid inpur")
 
 def updatedata(inid,new_data):
-   with open("file.json","w+") as f:
+   with open("file.json","w+") as file:
        if unid in di:
            di[unid] = new_data
-           json.dump(di,f)
+           json.dump(di,file)
            return ("updated sucessfully")
    raise json.decoder.JSONDecodeError("invalid operation")
 
