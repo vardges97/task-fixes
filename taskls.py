@@ -1,24 +1,20 @@
 task_list = []
 
-def generate_unique_id(id = 0):
-    if not task_list:
-        return 1
-    return max(task['id'] for task in task_list) + 1
+# def generate_unique_id(id = 0):
+#     if not task_list:
+#         return 1
+#     return max(task['id'] for task in task_list) + 1
 
 def add_task():
-    #task_id = input('enter a task id')
+    task_id = input('enter a task id: ')
     description = input("Enter task description: ")
     if not description:
         print("Task description cannot be empty.")
         return
-    # priority = input("Enter task priority (low, medium, high): ").lower()
-    # if priority not in ('low', 'medium', 'high'):
-    #     print("Invalid priority. Task not added.")
-    #     return
     status = "incompelete"
     priority = "none"
     task = {
-        'id': generate_unique_id(),
+        'id': task_id,
         'description': description,
         'compeletion': status,
         'priority': priority
@@ -52,16 +48,6 @@ def list_tasks():
 #             return
 #     print("Task not found in the to-do list.")
 
-def list_compeleted():
-    if not task_list:
-        print('to tasks found')
-    for task in task_list:
-        if task['compeletion'] == 'compelete':
-            print(f"ID: {task['id']},Description: {task['description']},"
-                f"Status: {task["compeletion"]},{task['priority']}")
-    else:
-        print('task not in task list')
-
 
 def task_status():
     task_id = input("please enter id of the task to change status: ")
@@ -71,6 +57,16 @@ def task_status():
             task['compeletion'] = status
             print('task status updated')
             return
+
+def list_compeleted():
+    if not task_list:
+        print('to tasks found')
+    for task in task_list:
+        if task['compeletion'] == 'compelete':
+            print(f"ID: {task['id']},Description: {task['description']},"
+                f"Status: {task["compeletion"]},{task['priority']}")
+    else:
+        print('task not in task list')
 
 def task_priority():
     task_id = input('enter the if of the task to which you want to set priority: ')
@@ -90,19 +86,21 @@ def list_by_priority():
     if not task_list:
         print('no tasks to list')
     for task in task_list:
-        print(max({task_list['priority']}))
+        print(min(list({task['priority']})))
 
 
 # def list_by_priority():
 #     if not task_list:
 #         print('to tasks found')
 #     criteria=['high','medium','low']
-#     for k in criteria:
-#         print(my)
-#         # if task['priority'] in ('low','medium','high') :
-#         #     print(f"ID: {task['id']},Description: {task['description']},"
-#         #         f"Status: {task["compeletion"]},{task['priority']}")
-#     print('task not in task list')
+#     for task in task_list:
+#         for k in criteria:
+#             # print(my)
+#             # for task['priority'] in ('low','medium','high') :
+#             print(f"ID: {task['id']},Description: {task['description']},"
+#                 f"Status: {task["compeletion"]},{task['priority']}")
+#     return
+
 
 while True:
     print("Welcome to the task list menue.\nto add a task press 1\nto remove a task press 2\n"

@@ -2,7 +2,6 @@ journal ={}
 
 def create_note():
     note_id = input('please enter a note id')
-    #     (input("please enter a note id"))
     if not note_id:
         print('note must have an id')
         return
